@@ -38,13 +38,56 @@ public class object3d {
                                      @NotNull float collideAccelTransformRate,
                                      @Nullable Vec3 wallPos1,
                                      @Nullable Vec3 wallPos2) {
+    Vec3 formerLoc = this.Location;
     this.transformVelocity();
     this.transformLocation();
     this.transformVelocity();
     if (!(wallPos1 == null || wallPos2 == null)) {
-      if (!(this.inRange(wallPos1, wallPos2, this.Location) {
-        
+      if (inRange(wallPos1, wallPos2, this.Location) != null) {
+        char collide = inRange(wallPos1, wallPos2, this.Location);
+        float _x, _y, _z;
+        _x = this.Location.x - formerLoc.x;
+        _y = this.Location.y - formerLoc.y;
+        _z = this.Location.z - formerLoc.z;
+        if (collide == "x"){}
       }
     }
+  }
+  
+  public static final inRange(@NotNull Vec3 pos1,
+                              @NotNull Vec3 pos2,
+                              @NotNull Vec3 testPosition) {
+    Vec3 _pos1 = new Vec3();
+    Vec3 _pos2 = new Vec3();
+    Vec3 _t = testPosition;
+  
+    // transform phase
+    if (pos1.x <= pos2.x) {
+      _pos1.x = pos1.x;
+      _pos2.x = pos2.x;
+    } else {
+      _pos1.x = pos2.x;
+      _pos2.x = pos1.x;
+    }
+    if (pos1.y <= pos2.y) {
+      _pos1.y = pos1.y;
+      _pos2.y = pos2.y;
+    } else {
+      _pos1.y = pos2.y;
+      _pos2.y = pos1.y;
+    }
+    if (pos1.z <= pos2.z) {
+      _pos1.z = pos1.z;
+      _pos2.z = pos2.z;
+    } else {
+      _pos1.z = pos2.z;
+      _pos2.z = pos1.z;
+    }
+  
+    // test phase
+    if (_pos1.x <= _t.x && _t.x <= _pos2.x) return "x";
+    if (_pos1.y <= _t.y && _t.y <= _pos2.y) return "y";
+    if (_pos1.z <= _t.z && _t.z <= _pos2.z) return "z";
+    return null;
   }
 }
