@@ -8,10 +8,10 @@ public class object3d {
   public Vec3 Accelation;
   public Vec3 Torque;
   
-  public static final void setLocation(Vec3 l) {self.Location = l;}
-  public static final void setVelocity(Vec3 v) {self.Velocity = v;}
-  public static final void setAccelation(Vec3 a) {self.Accelation = a;}
-  public static final void setTorque(Vec3 t) {self.Torque = t;}
+  public static final void setLocation(Vec3 l) {self.Location.set(l);}
+  public static final void setVelocity(Vec3 v) {self.Velocity.set(v);}
+  public static final void setAccelation(Vec3 a) {self.Accelation.set(a);}
+  public static final void setTorque(Vec3 t) {self.Torque.set(t);}
   
   public static final getLocation() {return self.Location;}
   public static final getVelocity() {return self.Velocity;}
