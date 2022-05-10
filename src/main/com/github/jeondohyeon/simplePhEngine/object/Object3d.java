@@ -7,7 +7,7 @@ import com.github.jeondohyeon.simplePhEngine.vector.Vector;
  * 
  * 3차원 오브젝트(정적)를 정의합니다.
  */
-public class object3d {
+public class Object3d {
   public Vec3 Location;
   public Vec3 Velocity;
   public Vec3 Accelation;
@@ -43,13 +43,15 @@ public class object3d {
     this.transformLocation();
     this.transformVelocity();
     if (!(wallPos1 == null || wallPos2 == null)) {
-      if (inRange(wallPos1, wallPos2, this.Location) != null) {
+      while (inRange(wallPos1, wallPos2, this.Location) != null) {
         char collide = inRange(wallPos1, wallPos2, this.Location);
-        float _x, _y, _z;
+        float _x, _y, _z, rate;
         _x = this.Location.x - formerLoc.x;
         _y = this.Location.y - formerLoc.y;
         _z = this.Location.z - formerLoc.z;
-        if (collide == "x"){}
+        if (collide == "x") {
+          rate = a;
+        }
       }
     }
   }
@@ -85,9 +87,9 @@ public class object3d {
     }
   
     // test phase
-    if (_pos1.x <= _t.x && _t.x <= _pos2.x) return "x";
-    if (_pos1.y <= _t.y && _t.y <= _pos2.y) return "y";
-    if (_pos1.z <= _t.z && _t.z <= _pos2.z) return "z";
+    if (!(_pos1.x <= _t.x && _t.x <= _pos2.x)) return "x";
+    if (!(_pos1.y <= _t.y && _t.y <= _pos2.y)) return "y";
+    if (!(_pos1.z <= _t.z && _t.z <= _pos2.z)) return "z";
     return null;
   }
 }
